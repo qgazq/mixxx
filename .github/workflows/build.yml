@@ -207,8 +207,8 @@ jobs:
       if: runner.os != 'Linux' && github.repository_owner == 'mixxxdj'
       shell: bash
       run: |
-        nuget sources add -Name mixxx-github-packages -Source https://nuget.pkg.github.com/mixxxdj/index.json -Username mixxxdj -Password ${{ secrets.GITHUB_TOKEN }} -StorePasswordInClearText -ForceEnglishOutput -NonInteractive
-        nuget setapikey ${{ secrets.GITHUB_TOKEN }} -Source mixxx-github-packages -ForceEnglishOutput -NonInteractive
+        nuget sources add -Name mixxx-github-packages -Source https://nuget.pkg.github.com/mixxxdj/index.json -Username mixxxdj -Password ${{ secrets.GITHUB_TOKEN }} -NonInteractive
+        nuget setapikey ${{ secrets.GITHUB_TOKEN }} -Source mixxx-github-packages -NonInteractive
         echo "VCPKG_BINARY_SOURCES=clear;nuget,mixxx-github-packages,readwrite;" >> "${GITHUB_ENV}"
 
     - name: Get Git commit of vcpkg submodule
